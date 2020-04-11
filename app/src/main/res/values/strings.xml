@@ -4,7 +4,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="show_exercises">Show\nexercises</string>
     <string name="hide_exercises">Hide\nexercises</string>
-    <string name="search_about" translatable="false">ABOUT</string>
+    <string name="search_about">ABOUT</string>
     <string name="body_weight">Bodyweight</string>
     <string name="total">Total</string>
     <string name="male">Male</string>
@@ -31,6 +31,7 @@
     <string name="category">Your level:</string>
     <string name="weight_category">Weight category:</string>
     <string name="in">"in: "</string>
+    <string name="show_normatives">Normatives:</string>
 
 
 </resources>

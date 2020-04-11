@@ -185,8 +185,17 @@ public class MainActivity extends AppCompatActivity implements Fragment3Exercise
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-            Intent intent=new Intent(this,AboutActivity.class);
-            startActivity(intent);
+        Intent intent;
+        switch (item.getItemId()){
+            case R.id.action_search:
+               intent=new Intent(this,AboutActivity.class);
+               startActivity(intent);
+                break;
+            case R.id.action_show_normatives:
+                intent=new Intent(this,NormativesActivity.class);
+                startActivity(intent);
+                break;
+        }
         return true;
     }
 

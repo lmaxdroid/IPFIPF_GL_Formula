@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">IPF Formula</string>
     <string name="show_exercises">Показать\nупражнения</string>
     <string name="hide_exercises">Скрыть\nупражнения</string>
     <string name="body_weight">Вес тела</string>
@@ -30,4 +29,6 @@
     <string name="category">Норматив:</string>
     <string name="weight_category">Весовая категория:</string>
     <string name="in">"в: "</string>
+    <string name="show_normatives">Нормативы:</string>
+    <string name="search_about" translatable="false">Об IPF формуле:</string>
 </resources>
