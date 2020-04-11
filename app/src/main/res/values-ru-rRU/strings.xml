@@ -31,4 +31,5 @@
     <string name="in">"в: "</string>
     <string name="show_normatives">Нормативы:</string>
     <string name="search_about" translatable="false">Об IPF формуле:</string>
+    <string name="categories">Нормативы:</string>
 </resources>

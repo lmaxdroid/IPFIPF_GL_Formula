@@ -31,7 +31,8 @@
     <string name="category">Your level:</string>
     <string name="weight_category">Weight category:</string>
     <string name="in">"in: "</string>
-    <string name="show_normatives">Normatives:</string>
+    <string name="show_normatives">Categories:</string>
+    <string name="categories">Categories:</string>
 
 
 </resources>

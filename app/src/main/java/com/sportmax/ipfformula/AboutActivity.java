@@ -9,9 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class AboutActivity extends AppCompatActivity {
 
-
-    ImageView pdfView;
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -33,8 +30,6 @@ public class AboutActivity extends AppCompatActivity {
         }
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeButtonEnabled(true);
-
-
     }
 }
 
