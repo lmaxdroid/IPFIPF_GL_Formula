@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name" translatable="false">IPF Formula</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="show_exercises">Show\nexercises</string>
+    <string name="hide_exercises">Hide\nexercises</string>
+    <string name="search_about" translatable="false">ABOUT</string>
+    <string name="body_weight">Bodyweight</string>
+    <string name="total">Total</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="classic">Classic</string>
+    <string name="equipped">Equipped</string>
+    <string name="powerlifting">Powerlifting</string>
+    <string name="bench_press">Bench press</string>
+    <string name="squat">Squat</string>
+    <string name="deadlift">Deadlift</string>
+    <string name="bench">Bench</string>
+    <string name="result">Result</string>
+    <string name="total_">Total =</string>
+    <string name="bodyweight">BodyWeight =</string>
+    <string name="msmk"><b>International Master of Sports</b></string>
+    <string name="ms"><b>Master of Sports</b></string>
+    <string name="kms"><b>Candidate Master of Sports</b></string>
+    <string name="first_category"><b>I</b>st category</string>
+    <string name="second_category"><b>II</b>st category</string>
+    <string name="third_category"><b>II</b>st category</string>
+    <string name="first_subjunior_category"><b>I</b> junior category</string>
+    <string name="second_subjunior_category"><b>II</b> junior category</string>
+    <string name="third_subjunior_category"><b>III</b> junior category</string>
+    <string name="category">Your level:</string>
+    <string name="weight_category">Weight category:</string>
+    <string name="in">"in: "</string>
+
+
+</resources>

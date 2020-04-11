@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="4dp"
+    android:background="@drawable/fon2"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/txt_body_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/body_weight"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/ed_body_weight"
+        app:layout_constraintStart_toStartOf="@+id/ed_body_weight"
+        app:layout_constraintTop_toBottomOf="@+id/txt_result" />
+
+    <TextView
+        android:id="@+id/txt_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/total"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="@+id/ed_total"
+        app:layout_constraintStart_toStartOf="@+id/ed_total"
+        app:layout_constraintTop_toBottomOf="@+id/txt_result" />
+
+    <TextView
+        android:id="@+id/txt_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:shadowColor="@android:color/darker_gray"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="5"
+        android:text="0.00"
+        android:textColor="@android:color/black"
+        android:textSize="52dp"
+        android:textStyle="bold"
+        android:lines="1"
+        android:maxLength="7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="0.00" />
+
+    <EditText
+        android:id="@+id/ed_body_weight"
+        style="@style/EditTextStyle"
+        android:layout_marginStart="32dp"
+        android:background="@drawable/edit_text_style"
+        android:ems="5"
+        android:hint="0.00 kg"
+        android:padding="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_body_weight" />
+
+    <EditText
+        android:id="@+id/ed_total"
+        style="@style/EditTextStyle"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/edit_text_style"
+        android:ems="5"
+        android:hint="0.00 kg"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_total" />
+
+    <TextView
+        android:id="@+id/txt_show_hide_exercises"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/show_exercises"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toStartOf="@+id/ed_total"
+        app:layout_constraintStart_toEndOf="@+id/ed_body_weight"
+        app:layout_constraintTop_toBottomOf="@+id/txt_result" />
+
+    <ImageView
+        android:id="@+id/img_Show_Exercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/divider"
+        app:layout_constraintEnd_toStartOf="@+id/ed_total"
+        app:layout_constraintStart_toEndOf="@+id/ed_body_weight"
+        app:layout_constraintTop_toBottomOf="@+id/txt_show_hide_exercises"
+        app:srcCompat="@drawable/arrow_down_download_save_icon_123720_48"
+        tools:srcCompat="@drawable/arrow_down_download_save_icon_123720_48" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/background_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_body_weight" />
+
+    <RadioGroup
+        android:id="@+id/rg_male_female"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider">
+
+        <RadioButton
+            android:id="@+id/rb_Male"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/male" />
+
+        <RadioButton
+            android:id="@+id/rb_Female"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/female" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/rg_classic_equipped"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/rg_male_female"
+        app:layout_constraintStart_toEndOf="@+id/rg_male_female"
+        app:layout_constraintTop_toTopOf="@+id/rg_male_female">
+
+        <RadioButton
+            android:id="@+id/rb_Classic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/classic" />
+
+        <RadioButton
+            android:id="@+id/rb_Equipped"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/equipped" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/radioGroup3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/rg_classic_equipped"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/rg_classic_equipped"
+        app:layout_constraintTop_toTopOf="@+id/rg_classic_equipped">
+
+        <RadioGroup
+            android:id="@+id/rg_lift_bp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RadioButton
+                android:id="@+id/rb_Powerlifting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/powerlifting" />
+
+            <RadioButton
+                android:id="@+id/rb_Benchpress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/bench_press" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/rg_squat_dl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RadioButton
+                android:id="@+id/rb_Squat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/squat" />
+
+            <RadioButton
+                android:id="@+id/rb_Deadlift"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/deadlift" />
+        </RadioGroup>
+
+    </RadioGroup>
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rg_male_female" />
+
+    <FrameLayout
+        android:id="@+id/frame_for_fragments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider2"
+        app:layout_constraintVertical_bias="0.0"></FrameLayout>
+
+    <TextView
+        android:id="@+id/txt_name_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/category"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frame_for_fragments" />
+
+    <TextView
+        android:id="@+id/txt_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="КМС"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_name_category"
+        app:layout_constraintStart_toStartOf="@+id/txt_name_category"
+        app:layout_constraintTop_toBottomOf="@+id/txt_name_category" />
+
+    <TextView
+        android:id="@+id/txt_name_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/weight_category"
+        app:layout_constraintEnd_toStartOf="@+id/txt_bodyweight_category"
+        app:layout_constraintStart_toStartOf="@+id/txt_category"
+        app:layout_constraintTop_toBottomOf="@+id/txt_category" />
+
+    <TextView
+        android:id="@+id/txt_bodyweight_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="+84"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_name_weight"
+        app:layout_constraintEnd_toEndOf="@+id/txt_category"
+        app:layout_constraintStart_toEndOf="@+id/txt_name_weight"
+        app:layout_constraintTop_toTopOf="@+id/txt_name_weight" />
+
+    <TextView
+        android:id="@+id/txt_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/in"
+        app:layout_constraintBottom_toBottomOf="@+id/imgFlagKZ"
+        app:layout_constraintEnd_toStartOf="@+id/imgFlagKZ"
+        app:layout_constraintTop_toBottomOf="@+id/txt_name_weight" />
+
+    <ImageView
+        android:id="@+id/imgFlagKZ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/txt_bodyweight_category"
+        app:layout_constraintStart_toStartOf="@+id/txt_name_weight"
+        app:layout_constraintTop_toBottomOf="@+id/txt_name_weight"
+        app:srcCompat="@drawable/flagofkazakhstan_6489" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

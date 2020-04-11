@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">IPF Formula</string>
+    <string name="show_exercises">Показать\nупражнения</string>
+    <string name="hide_exercises">Скрыть\nупражнения</string>
+    <string name="body_weight">Вес тела</string>
+    <string name="total">Сумма</string>
+    <string name="male">Муж.</string>
+    <string name="female">Жен.</string>
+    <string name="classic">Классика</string>
+    <string name="equipped">Экипа</string>
+    <string name="powerlifting">Пауэр.</string>
+    <string name="bench_press">Жим</string>
+    <string name="squat">Присед</string>
+    <string name="deadlift">Тяга</string>
+    <string name="bench">Жим</string>
+    <string name="result">Коэф-т</string>
+    <string name="bodyweight">"Вес тела ="</string>
+
+    <string name="total_">Сумма =</string>
+    <string name="msmk">МСМК</string>
+    <string name="ms">МС</string>
+    <string name="kms">КМС</string>
+    <string name="first_category"><b>I</b> разряд</string>
+    <string name="first_subjunior_category"><b>I</b> юношеский разряд</string>
+    <string name="second_subjunior_category"><b>I</b> юношеский разряд</string>
+    <string name="third_subjunior_category"><b>I</b> юношеский разряд</string>
+    <string name="second_category"><b>I</b> разряд</string>
+    <string name="third_category"><b>I</b> разряд</string>
+    <string name="category">Норматив:</string>
+    <string name="weight_category">Весовая категория:</string>
+    <string name="in">"в: "</string>
+</resources>
