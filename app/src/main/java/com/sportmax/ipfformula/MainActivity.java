@@ -195,6 +195,8 @@ public class MainActivity extends AppCompatActivity implements Fragment3Exercise
                 intent=new Intent(this,NormativesActivity.class);
                 startActivity(intent);
                 break;
+            default:
+                return super.onOptionsItemSelected(item);
         }
         return true;
     }
