@@ -32,7 +32,9 @@ public class Fragment3Exercises extends Fragment {
     private TextView txtPlusTotal1, txtResult1, txtBodyWightFrag1;
     private TextView txtPlusTotal2, txtResult2,txtBodyWightFrag2;
     private TextView txtPlusTotal3, txtResult3,txtBodyWightFrag3;
-    private ImageView imgAddExercises,imgDel1,imgDel2,imgDel3;
+    private ImageView imgAddExercises;
+    private ImageView imgDel2;
+    private ImageView imgDel3;
     private double totalFragment1 = 0.00, squat1 = 0.00, bench1 = 0.00, deadlift1 = 0.00;
     private double totalFragment2 = 0.00, squat2 = 0.00, bench2 = 0.00, deadlift2 = 0.00;
     private double totalFragment3 = 0.00, squat3 = 0.00, bench3 = 0.00, deadlift3 = 0.00;
@@ -141,7 +143,7 @@ public class Fragment3Exercises extends Fragment {
         edBench3.addTextChangedListener(watcher);
         edDeadlift3.addTextChangedListener(watcher);
 
-        imgDel1=rootView.findViewById(R.id.img_del1);
+        ImageView imgDel1 = rootView.findViewById(R.id.img_del1);
         imgDel2=rootView.findViewById(R.id.img_del2);
         imgDel3=rootView.findViewById(R.id.img_del3);
         imgDel1.setOnClickListener(onClickDeletePerson);

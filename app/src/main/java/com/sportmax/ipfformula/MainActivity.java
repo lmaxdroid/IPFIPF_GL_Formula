@@ -231,6 +231,7 @@ public class MainActivity extends AppCompatActivity implements Fragment3Exercise
         edTotal = findViewById(R.id.ed_total);
 
         txtShowHideExercises=findViewById(R.id.txt_show_hide_exercises);
+        txtShowHideExercises.setOnClickListener(onImgShowExerciseClickListener);
         imgShowExercise = findViewById(R.id.img_Show_Exercise);
         imgShowExercise.setOnClickListener(onImgShowExerciseClickListener);
 
