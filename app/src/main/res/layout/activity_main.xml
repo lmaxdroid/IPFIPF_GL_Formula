@@ -239,11 +239,12 @@
         android:id="@+id/txt_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="КМС"
+        android:onClick="onClickCategory"
         android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="@+id/txt_name_category"
         app:layout_constraintStart_toStartOf="@+id/txt_name_category"
-        app:layout_constraintTop_toBottomOf="@+id/txt_name_category" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_name_category"
+        tools:text="КМС" />
 
     <TextView
         android:id="@+id/txt_name_weight"

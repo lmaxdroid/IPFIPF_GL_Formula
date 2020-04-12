@@ -356,7 +356,7 @@ public class MainActivity extends AppCompatActivity implements Fragment3Exercise
                             if(isFragmentDisplayed){closeFragment();}
                             imgShowExercise.setVisibility(View.GONE);
                             txtShowHideExercises.setVisibility(View.GONE);}
-                    }//здесь какбы делаем группу из четырех переключателей, чтоб горе только один переключатель из двух разных групп
+                    }//здесь какбы делаем группу из четырех переключателей, чтоб горел только один переключатель из двух разных групп
                     if (checkedId == R.id.rb_Powerlifting || checkedId == R.id.rb_Benchpress) {
                         rgSquatdl.clearCheck();
                     } else if (checkedId == R.id.rb_Squat || checkedId == R.id.rb_Deadlift) {
@@ -366,7 +366,7 @@ public class MainActivity extends AppCompatActivity implements Fragment3Exercise
             }
         }
     };
-
+//Выбираем коэффициенты в зависимости от того какой radioButton выбран
     private void ChooseConstants(){
             if(rbMale.isChecked()){
                 mwxWeight=menWeight;
@@ -441,6 +441,7 @@ public class MainActivity extends AppCompatActivity implements Fragment3Exercise
         }
     }
 
+    // Смотрим какой норматив получился и выводим его снизу
     private void chooseSportsCategory(double bw, double total){
         int category = 0, ii = 0,jj = 0;
         for (int i=0;i<mwxWeight.length;i++){
@@ -464,5 +465,10 @@ public class MainActivity extends AppCompatActivity implements Fragment3Exercise
         }else {
             txtCategory.setText(arrayStringCategory[jj]);
         }
+    }
+
+    public void onClickCategory(View view) {
+        Intent intent=new Intent(this,NormativesActivity.class);
+        startActivity(intent);
     }
 }
