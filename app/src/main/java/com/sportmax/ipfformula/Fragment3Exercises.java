@@ -29,20 +29,28 @@ public class Fragment3Exercises extends Fragment {
     private EditText edSquat, edBench, edDeadlift;
     private EditText edSquat2, edBench2, edDeadlift2;
     private EditText edSquat3, edBench3, edDeadlift3;
+    private EditText edSquat4, edBench4, edDeadlift4;
+    private EditText edSquat5, edBench5, edDeadlift5;
     private TextView txtPlusTotal1, txtResult1, txtBodyWightFrag1;
     private TextView txtPlusTotal2, txtResult2,txtBodyWightFrag2;
     private TextView txtPlusTotal3, txtResult3,txtBodyWightFrag3;
+    private TextView txtPlusTotal4, txtResult4,txtBodyWightFrag4;
+    private TextView txtPlusTotal5, txtResult5,txtBodyWightFrag5;
     private ImageView imgAddExercises;
     private ImageView imgDel2;
     private ImageView imgDel3;
+    private ImageView imgDel4;
+    private ImageView imgDel5;
     private double totalFragment1 = 0.00, squat1 = 0.00, bench1 = 0.00, deadlift1 = 0.00;
     private double totalFragment2 = 0.00, squat2 = 0.00, bench2 = 0.00, deadlift2 = 0.00;
     private double totalFragment3 = 0.00, squat3 = 0.00, bench3 = 0.00, deadlift3 = 0.00;
-    public double bw1,bw2,bw3,bwFromActivity;
+    private double totalFragment4 = 0.00, squat4 = 0.00, bench4 = 0.00, deadlift4 = 0.00;
+    private double totalFragment5 = 0.00, squat5 = 0.00, bench5 = 0.00, deadlift5 = 0.00;
+    public double bw1,bw2,bw3,bw4,bw5,bwFromActivity;
     int addNewPersonForWatch = 0;
     public String strResult,sTotal,sBodyweight;
 
-    private LinearLayout ll1,ll2,ll3;
+    private LinearLayout ll1,ll2,ll3,ll4,ll5;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -143,12 +151,38 @@ public class Fragment3Exercises extends Fragment {
         edBench3.addTextChangedListener(watcher);
         edDeadlift3.addTextChangedListener(watcher);
 
+        edSquat4 = rootView.findViewById(R.id.ed_squat_fragment_4);
+        edBench4 = rootView.findViewById(R.id.ed_bench_fragment_4);
+        edDeadlift4 = rootView.findViewById(R.id.ed_deadlift_fragment_4);
+        txtBodyWightFrag4=rootView.findViewById(R.id.txt_body_weight_frag4);
+        txtBodyWightFrag4.setText(" 4) "+sBodyweight);
+        txtResult4 = rootView.findViewById(R.id.txt_result_fragment_4);
+        txtPlusTotal4 = rootView.findViewById(R.id.txt_plus_3_exercises_4);
+        edSquat4.addTextChangedListener(watcher);
+        edBench4.addTextChangedListener(watcher);
+        edDeadlift4.addTextChangedListener(watcher);
+
+        edSquat5 = rootView.findViewById(R.id.ed_squat_fragment_5);
+        edBench5 = rootView.findViewById(R.id.ed_bench_fragment_5);
+        edDeadlift5 = rootView.findViewById(R.id.ed_deadlift_fragment_5);
+        txtBodyWightFrag5=rootView.findViewById(R.id.txt_body_weight_frag5);
+        txtBodyWightFrag5.setText(" 5) "+sBodyweight);
+        txtResult5 = rootView.findViewById(R.id.txt_result_fragment_3);
+        txtPlusTotal5 = rootView.findViewById(R.id.txt_plus_3_exercises_3);
+        edSquat5.addTextChangedListener(watcher);
+        edBench5.addTextChangedListener(watcher);
+        edDeadlift5.addTextChangedListener(watcher);
+
         ImageView imgDel1 = rootView.findViewById(R.id.img_del1);
         imgDel2=rootView.findViewById(R.id.img_del2);
         imgDel3=rootView.findViewById(R.id.img_del3);
+        imgDel4=rootView.findViewById(R.id.img_del4);
+        imgDel5=rootView.findViewById(R.id.img_del5);
         imgDel1.setOnClickListener(onClickDeletePerson);
         imgDel2.setOnClickListener(onClickDeletePerson);
         imgDel3.setOnClickListener(onClickDeletePerson);
+        imgDel4.setOnClickListener(onClickDeletePerson);
+        imgDel5.setOnClickListener(onClickDeletePerson);
 
         imgAddExercises = rootView.findViewById(R.id.img_add_exercises);
 
@@ -160,12 +194,16 @@ public class Fragment3Exercises extends Fragment {
         ll2.setVisibility(View.GONE);
         ll3 = rootView.findViewById(R.id.linearLayout_frag_3);
         ll3.setVisibility(View.GONE);
+        ll4 = rootView.findViewById(R.id.linearLayout_frag_4);
+        ll4.setVisibility(View.GONE);
+        ll5 = rootView.findViewById(R.id.linearLayout_frag_5);
+        ll5.setVisibility(View.GONE);
 
         imgAddExercises.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 addNewPersonForWatch++;
-                if(addNewPersonForWatch==3){imgAddExercises.setVisibility(GONE);}
+                if(addNewPersonForWatch==5){imgAddExercises.setVisibility(GONE);}
                 if(ll1.getVisibility()==GONE){
                     ll1.setBackgroundResource(R.drawable.back);
                     ll1.setVisibility(VISIBLE);
@@ -179,7 +217,16 @@ public class Fragment3Exercises extends Fragment {
                         if(ll3.getVisibility()==GONE){
                             ll3.setBackgroundResource(R.drawable.back);
                             ll3.setVisibility(VISIBLE);
-
+                        }else {
+                            if (ll4.getVisibility() == GONE) {
+                                ll4.setBackgroundResource(R.drawable.back);
+                                ll4.setVisibility(VISIBLE);
+                            } else {
+                                if (ll5.getVisibility() == GONE) {
+                                    ll5.setBackgroundResource(R.drawable.back);
+                                    ll5.setVisibility(VISIBLE);
+                                }
+                            }
                         }
                     }
                 }
@@ -192,7 +239,7 @@ public class Fragment3Exercises extends Fragment {
         @Override
         public void onClick(View v) {
             addNewPersonForWatch--;
-            if(addNewPersonForWatch<3){
+            if(addNewPersonForWatch<5){
                 imgAddExercises.setVisibility(VISIBLE);
             }
             switch (v.getId()){
@@ -222,6 +269,18 @@ public class Fragment3Exercises extends Fragment {
                     txtBodyWightFrag3.setText(" 3) "+sBodyweight+"0.00");txtPlusTotal3.setText(sTotal+ "0.00");txtResult3.setText("0.00");
                     ll3.setVisibility(View.GONE);
                     break;
+                case R.id.img_del4:
+                    edSquat4.setText("");edBench4.setText("");edDeadlift4.setText("");
+                    squat4=0.00;bench4=0.00;deadlift4=0.00;
+                    txtBodyWightFrag4.setText(" 4) "+sBodyweight+"0.00");txtPlusTotal4.setText(sTotal+ "0.00");txtResult4.setText("0.00");
+                    ll4.setVisibility(View.GONE);
+                    break;
+                case R.id.img_del5:
+                    edSquat5.setText("");edBench5.setText("");edDeadlift5.setText("");
+                    squat5=0.00;bench5=0.00;deadlift5=0.00;
+                    txtBodyWightFrag5.setText(" 5) "+sBodyweight+"0.00");txtPlusTotal5.setText(sTotal+ "0.00");txtResult5.setText("0.00");
+                    ll5.setVisibility(View.GONE);
+                    break;
             }
         }
     };
@@ -242,6 +301,7 @@ public class Fragment3Exercises extends Fragment {
         public void afterTextChanged(Editable s) {
             if(ll1.hasFocus()){
                // bw1=bwFromActivity;
+                if(!txtResult1.getText().equals("0.00")){};
             if (edSquat.getEditableText()==s) {
                 if (s.length() == 0 || s.toString().charAt(0) == '.') {
                     squat1 = 0.00;
@@ -307,7 +367,7 @@ public class Fragment3Exercises extends Fragment {
                         txtResult2.setText(strResult);
             }
             if(ll3.hasFocus()){
-               // bw3=bwFromActivity;
+                // bw3=bwFromActivity;
                 if (edSquat3.getEditableText()==s) {
                     if (s.length() == 0 || s.toString().charAt(0) == '.') {
                         squat3 = 0.00;
@@ -317,28 +377,94 @@ public class Fragment3Exercises extends Fragment {
                 }else{
                     if (edBench3.getEditableText()==s) {
                         if (s.length() == 0 || s.toString().charAt(0) == '.') {
-                                bench3 = 0.00;
-                            } else {
-                                bench3 = Double.parseDouble(s.toString());
-                            }
+                            bench3 = 0.00;
                         } else {
-                            if (edDeadlift3.getEditableText()==s) {
-                                if (s.length() == 0 || s.toString().charAt(0) == '.') {
-                                    deadlift3 = 0.00;
-                                } else {
-                                    deadlift3 = Double.parseDouble(s.toString());
-                                }
+                            bench3 = Double.parseDouble(s.toString());
+                        }
+                    } else {
+                        if (edDeadlift3.getEditableText()==s) {
+                            if (s.length() == 0 || s.toString().charAt(0) == '.') {
+                                deadlift3 = 0.00;
+                            } else {
+                                deadlift3 = Double.parseDouble(s.toString());
                             }
                         }
                     }
-
-                    totalFragment3 = squat3 + bench3 + deadlift3;
-                    txtPlusTotal3.setText(sTotal+ totalFragment3);
-                    transferTotalListener.transferTotal(totalFragment3);
-                    bw3=bwFromActivity;
-                    txtBodyWightFrag3.setText(" 3) "+sBodyweight+bw3);
-                    txtResult3.setText(strResult);
                 }
+
+                totalFragment3 = squat3 + bench3 + deadlift3;
+                txtPlusTotal3.setText(sTotal+ totalFragment3);
+                transferTotalListener.transferTotal(totalFragment3);
+                bw3=bwFromActivity;
+                txtBodyWightFrag3.setText(" 3) "+sBodyweight+bw3);
+                txtResult3.setText(strResult);
+            }
+            if(ll4.hasFocus()){
+                // bw3=bwFromActivity;
+                if (edSquat4.getEditableText()==s) {
+                    if (s.length() == 0 || s.toString().charAt(0) == '.') {
+                        squat4 = 0.00;
+                    } else {
+                        squat4 = Double.parseDouble(s.toString());
+                    }
+                }else{
+                    if (edBench4.getEditableText()==s) {
+                        if (s.length() == 0 || s.toString().charAt(0) == '.') {
+                            bench4 = 0.00;
+                        } else {
+                            bench4 = Double.parseDouble(s.toString());
+                        }
+                    } else {
+                        if (edDeadlift4.getEditableText()==s) {
+                            if (s.length() == 0 || s.toString().charAt(0) == '.') {
+                                deadlift4 = 0.00;
+                            } else {
+                                deadlift4 = Double.parseDouble(s.toString());
+                            }
+                        }
+                    }
+                }
+
+                totalFragment4 = squat4 + bench4 + deadlift4;
+                txtPlusTotal4.setText(sTotal+ totalFragment4);
+                transferTotalListener.transferTotal(totalFragment4);
+                bw4=bwFromActivity;
+                txtBodyWightFrag4.setText(" 4) "+sBodyweight+bw4);
+                txtResult4.setText(strResult);
+            }
+            if(ll5.hasFocus()){
+                // bw3=bwFromActivity;
+                if (edSquat5.getEditableText()==s) {
+                    if (s.length() == 0 || s.toString().charAt(0) == '.') {
+                        squat5 = 0.00;
+                    } else {
+                        squat5 = Double.parseDouble(s.toString());
+                    }
+                }else{
+                    if (edBench5.getEditableText()==s) {
+                        if (s.length() == 0 || s.toString().charAt(0) == '.') {
+                            bench5 = 0.00;
+                        } else {
+                            bench5 = Double.parseDouble(s.toString());
+                        }
+                    } else {
+                        if (edDeadlift5.getEditableText()==s) {
+                            if (s.length() == 0 || s.toString().charAt(0) == '.') {
+                                deadlift5 = 0.00;
+                            } else {
+                                deadlift5 = Double.parseDouble(s.toString());
+                            }
+                        }
+                    }
+                }
+
+                totalFragment5 = squat5 + bench5 + deadlift5;
+                txtPlusTotal5.setText(sTotal+ totalFragment5);
+                transferTotalListener.transferTotal(totalFragment5);
+                bw5=bwFromActivity;
+                txtBodyWightFrag5.setText(" 5) "+sBodyweight+bw5);
+                txtResult5.setText(strResult);
+            }
             }
         };
 }

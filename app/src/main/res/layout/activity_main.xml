@@ -194,15 +194,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rg_male_female" />
 
-    <FrameLayout
-        android:id="@+id/frame_for_fragments"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider2"
-        app:layout_constraintVertical_bias="0.0"></FrameLayout>
+
+
+            <FrameLayout
+                android:id="@+id/frame_for_fragments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider2"
+                app:layout_constraintVertical_bias="0.0">
+        </FrameLayout>
+
+
 
     <TextView
         android:id="@+id/txt_name_category"
@@ -211,7 +216,35 @@
         android:text="@string/category"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frame_for_fragments" />
+        app:layout_constraintTop_toBottomOf="@id/frame_for_fragments" />
+
+    <TextView
+        android:id="@+id/txt_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/in"
+        app:layout_constraintBottom_toBottomOf="@+id/imgFlagKZ"
+        app:layout_constraintEnd_toStartOf="@+id/imgFlagKZ"
+        app:layout_constraintTop_toBottomOf="@+id/txt_name_weight" />
+
+    <TextView
+        android:id="@+id/txt_bodyweight_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_name_weight"
+        app:layout_constraintEnd_toEndOf="@+id/txt_category"
+        app:layout_constraintStart_toEndOf="@+id/txt_name_weight"
+        app:layout_constraintTop_toTopOf="@+id/txt_name_weight"
+        tools:text="+84" />
+
+    <ImageView
+        android:id="@+id/imgFlagKZ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/txt_bodyweight_category"
+        app:layout_constraintStart_toStartOf="@+id/txt_name_weight"
+        app:layout_constraintTop_toBottomOf="@+id/txt_name_weight"
+        app:srcCompat="@drawable/flagofkazakhstan_6489" />
 
     <TextView
         android:id="@+id/txt_category"
@@ -232,33 +265,5 @@
         app:layout_constraintEnd_toStartOf="@+id/txt_bodyweight_category"
         app:layout_constraintStart_toStartOf="@+id/txt_category"
         app:layout_constraintTop_toBottomOf="@+id/txt_category" />
-
-    <TextView
-        android:id="@+id/txt_bodyweight_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_name_weight"
-        app:layout_constraintEnd_toEndOf="@+id/txt_category"
-        app:layout_constraintStart_toEndOf="@+id/txt_name_weight"
-        app:layout_constraintTop_toTopOf="@+id/txt_name_weight"
-        tools:text="+84" />
-
-    <TextView
-        android:id="@+id/txt_in"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/in"
-        app:layout_constraintBottom_toBottomOf="@+id/imgFlagKZ"
-        app:layout_constraintEnd_toStartOf="@+id/imgFlagKZ"
-        app:layout_constraintTop_toBottomOf="@+id/txt_name_weight" />
-
-    <ImageView
-        android:id="@+id/imgFlagKZ"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/txt_bodyweight_category"
-        app:layout_constraintStart_toStartOf="@+id/txt_name_weight"
-        app:layout_constraintTop_toBottomOf="@+id/txt_name_weight"
-        app:srcCompat="@drawable/flagofkazakhstan_6489" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

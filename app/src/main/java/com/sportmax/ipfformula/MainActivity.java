@@ -265,7 +265,6 @@ public class MainActivity extends AppCompatActivity implements Fragment3Exercise
                     total = Double.parseDouble(edTotal.getText().toString());
                 }
                 if (bw > 40 & s.length() != 0) {
-                   // ipfPoints = getIpfPoints(CX[0], CX[1], CX[2], CX[3], bw, total);
                     ipfGL=getIpfGLCoefficient(CX[0],CX[1],CX[2],bw,total);
                     if (ipfGL > 0) {
                         txtResult.setText(ipfGL+"");
