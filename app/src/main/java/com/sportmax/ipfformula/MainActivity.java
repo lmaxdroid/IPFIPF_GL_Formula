@@ -20,18 +20,19 @@ import androidx.fragment.app.FragmentTransaction;
 import java.math.BigDecimal;
 
 import static java.lang.Math.log;
+import static java.lang.Math.pow;
 
 public class MainActivity extends AppCompatActivity implements Fragment3Exercises.onTransferTotalListener{
     TextView txtResult, txtShowHideExercises, txtCategory, txtBodyWeightCategory,txtNameCategory,txtNameWeight,txtIn;
     EditText edBodyWeight, edTotal;
     double total = 0;
-    double ipfPoints = 0.00, bw = 0;
+    double bw = 0, ipfGL=0.0;
     BigDecimal bigDecimal;
 
     private boolean isFragmentDisplayed = false;
 
-    RadioGroup rgMaleFemale, rgClassicEquipped, rgLiftbp, rgSquatdl;
-    RadioButton rbMale,rbFemale, rbPowerlifting, rbClassic,rbEquipped, rbBenchpress, rbSquat,rbDeadlift;
+    RadioGroup rgMaleFemale, rgClassicEquipped, rgLiftbp;
+    RadioButton rbMale,rbFemale, rbPowerlifting, rbClassic,rbEquipped, rbBenchpress;
     ImageView imgShowExercise,imgFlagKZ;
 
     double[][] MPC ={{0, 0, 150, 140, 130, 120, 110, 95, 80},
@@ -140,42 +141,24 @@ public class MainActivity extends AppCompatActivity implements Fragment3Exercise
     int[] womenWeight ={32,36,40,43,47,52,57,63,72,84,1000};//женские весовые категории
     int[] mwxWeight;//временный массив для выбора весовой категории в методе chooseSportsCategory
 
+    private static final double A_MEP = 1236.25115,  B_MEP = 1449.21864,  C_MEP = 0.01644;
+    private static final double A_MCP = 1199.72839,  B_MCP = 1025.18162,  C_MCP = 0.00921;
+    private static final double A_MEB = 381.22073,   B_MEB = 733.79378,   C_MEB = 0.02398;
+    private static final double A_MCB = 320.98041,   B_MCB = 281.40258,   C_MCB = 0.01008;
+    private static final double A_WEP = 758.63878,   B_WEP = 949.31382,   C_WEP = 0.02435;
+    private static final double A_WCP = 610.32796 ,  B_WCP = 1045.59282,  C_WCP = 0.03048;
+    private static final double A_WEB = 221.82209,   B_WEB = 357.00377,   C_WEB = 0.02937;
+    private static final double A_WCB = 142.40398,   B_WCB = 442.52671,   C_WCB = 0.04724;
 
-    private static final double C1_MCL = 310.6700, C2_MCL = 857.7850, C3_MCL = 53.2160, C4_MCL = 147.0835;
-    private static final double C1_MCB = 86.4745, C2_MCB = 259.1550, C3_MCB = 17.5785, C4_MCB = 53.1220;
-    private static final double C1_MEL = 387.2650, C2_MEL = 1121.2800, C3_MEL = 80.6324, C4_MEL = 222.4896;
-    private static final double C1_MEB = 133.9400, C2_MEB = 441.4650, C3_MEB = 35.3938, C4_MEB = 113.0057;
-    private static final double C1_WCL = 125.1435, C2_WCL = 228.0300, C3_WCL = 34.5246, C4_WCL = 86.8301;
-    private static final double C1_WCB = 25.0485, C2_WCB = 43.8480, C3_WCB = 6.7172, C4_WCB = 13.9520;
-    private static final double C1_WEL = 176.5800, C2_WEL = 373.3150, C3_WEL = 48.4534, C4_WEL = 110.0103;
-    private static final double C1_WEB = 49.1060, C2_WEB = 124.2090, C3_WEB = 23.1990, C4_WEB = 67.4926;
+    double[] MEP_GL ={A_MEP,B_MEP,C_MEP};
+    double[] MCP_GL ={A_MCP,B_MCP,C_MCP};
+    double[] MEB_GL ={A_MEB,B_MEB,C_MEB};
+    double[] MCB_GL ={A_MCB,B_MCB,C_MCB};
+    double[] WEP_GL ={A_WEP,B_WEP,C_WEP};
+    double[] WCP_GL ={A_WCP,B_WCP,C_WCP};
+    double[] WEB_GL ={A_WEB,B_WEB,C_WEB};
+    double[] WCB_GL ={A_WCB,B_WCB,C_WCB};
 
-    private static final double C1_MCS = 123.1000, C2_MCS = 363.0850, C3_MCS = 25.1667, C4_MCS = 75.4311;
-    private static final double C1_MES = 150.4850, C2_MES = 446.4450, C3_MES = 36.5155, C4_MES = 103.7061;
-    private static final double C1_WCS = 50.4790, C2_WCS = 105.6320, C3_WCS = 19.1846, C4_WCS = 56.2215;
-    private static final double C1_WES = 74.6855, C2_WES = 171.5850, C3_WES = 21.9475, C4_WES = 52.2948;
-
-    private static final double C1_MCD = 103.5355, C2_MCD = 224.7650, C3_MCD = 15.3714, C4_MCD = 31.5022;
-    private static final double C1_MED = 110.1350, C2_MED = 263.6600, C3_MED = 14.9960, C4_MED = 23.0110;
-    private static final double C1_WCD = 47.1360, C2_WCD = 67.3490, C3_WCD = 9.1555, C4_WCD = 13.6700;
-    private static final double C1_WED = 51.0020, C2_WED = 69.8265, C3_WED = 8.5802, C4_WED = 5.7258;
-
-    double[] MCL ={C1_MCL,C2_MCL,C3_MCL,C4_MCL};
-    double[] MCB ={C1_MCB, C2_MCB, C3_MCB, C4_MCB};
-    double[] MEL ={C1_MEL, C2_MEL, C3_MEL, C4_MEL};
-    double[] MEB ={C1_MEB, C2_MEB, C3_MEB, C4_MEB};
-    double[] WCL ={C1_WCL, C2_WCL, C3_WCL, C4_WCL};
-    double[] WCB ={C1_WCB, C2_WCB, C3_WCB, C4_WCB};
-    double[] WEL ={C1_WEL, C2_WEL, C3_WEL, C4_WEL};
-    double[] WEB ={C1_WEB, C2_WEB, C3_WEB, C4_WEB};
-    double[] MCS ={C1_MCS, C2_MCS, C3_MCS, C4_MCS};
-    double[] MES ={C1_MES, C2_MES, C3_MES, C4_MES};
-    double[] WCS ={C1_WCS, C2_WCS, C3_WCS, C4_WCS};
-    double[] WES ={C1_WES, C2_WES, C3_WES, C4_WES};
-    double[] MCD ={C1_MCD, C2_MCD, C3_MCD, C4_MCD};
-    double[] MED ={C1_MED, C2_MED, C3_MED, C4_MED};
-    double[] WCD ={C1_WCD, C2_WCD, C3_WCD, C4_WCD};
-    double[] WED ={C1_WED, C2_WED, C3_WED, C4_WED};
 
     double[] CX;
 
@@ -253,14 +236,10 @@ public class MainActivity extends AppCompatActivity implements Fragment3Exercise
                     bw = Double.parseDouble(s.toString());
                 }
                 if (total > 0 & bw > 40) {
-                    ipfPoints = getIpfPoints(CX[0], CX[1], CX[2], CX[3], bw, total);
-                    if (ipfPoints > 0) {
-                        txtResult.setText(Double.toString(ipfPoints));
-                        if(rbSquat.isChecked()||rbDeadlift.isChecked()){
-                            txtCategory.setText("");
-                            txtBodyWeightCategory.setText("");
-                        }else{
-                            chooseSportsCategory(bw,total);}
+                    ipfGL=getIpfGLCoefficient(CX[0],CX[1],CX[2],bw,total);
+                    if (ipfGL > 0) {
+                        txtResult.setText(Double.toString(ipfGL));
+                            chooseSportsCategory(bw,total);
                     } else {
                         txtResult.setText("0.00");
                     }
@@ -286,14 +265,11 @@ public class MainActivity extends AppCompatActivity implements Fragment3Exercise
                     total = Double.parseDouble(edTotal.getText().toString());
                 }
                 if (bw > 40 & s.length() != 0) {
-                    ipfPoints = getIpfPoints(CX[0], CX[1], CX[2], CX[3], bw, total);
-                    if (ipfPoints > 0) {
-                        txtResult.setText(ipfPoints+"");
-                        if(rbSquat.isChecked()||rbDeadlift.isChecked()){
-                            txtCategory.setText("");
-                            txtBodyWeightCategory.setText("");
-                        }else{
-                        chooseSportsCategory(bw,total);}
+                   // ipfPoints = getIpfPoints(CX[0], CX[1], CX[2], CX[3], bw, total);
+                    ipfGL=getIpfGLCoefficient(CX[0],CX[1],CX[2],bw,total);
+                    if (ipfGL > 0) {
+                        txtResult.setText(ipfGL+"");
+                        chooseSportsCategory(bw,total);
                     } else {
                         txtResult.setText("0.00");
                     }
@@ -304,7 +280,6 @@ public class MainActivity extends AppCompatActivity implements Fragment3Exercise
         rgMaleFemale=findViewById(R.id.rg_male_female);
         rgClassicEquipped=findViewById(R.id.rg_classic_equipped);
         rgLiftbp = findViewById(R.id.rg_lift_bp);
-        rgSquatdl = findViewById(R.id.rg_squat_dl);
 
         rbMale=findViewById(R.id.rb_Male);
         rbFemale=findViewById(R.id.rb_Female);
@@ -312,16 +287,12 @@ public class MainActivity extends AppCompatActivity implements Fragment3Exercise
         rbEquipped=findViewById(R.id.rb_Equipped);
         rbPowerlifting=findViewById(R.id.rb_Powerlifting);
         rbBenchpress=findViewById(R.id.rb_Benchpress);
-        rbSquat=findViewById(R.id.rb_Squat);
-        rbDeadlift=findViewById(R.id.rb_Deadlift);
 
         rgMaleFemale.setOnCheckedChangeListener(onRadioGroupCheckedChangeListener);
         rgClassicEquipped.setOnCheckedChangeListener(onRadioGroupCheckedChangeListener);
-        rgSquatdl.setOnCheckedChangeListener(onRadioGroupCheckedChangeListener);
         rgLiftbp.setOnCheckedChangeListener(onRadioGroupCheckedChangeListener);
 
-        ChooseConstants();
-
+        ChooseConstantsGL();
     }
 
     ImageView.OnClickListener onImgShowExerciseClickListener =new View.OnClickListener() {
@@ -345,68 +316,57 @@ public class MainActivity extends AppCompatActivity implements Fragment3Exercise
         public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if(checkedId!=-1){
                 RadioButton rb = findViewById(group.getCheckedRadioButtonId());
-                ChooseConstants();
-                if(total > 0 & bw > 40){ ipfPoints = getIpfPoints(CX[0], CX[1], CX[2], CX[3], bw, total); txtResult.setText(ipfPoints+"");}
+                ChooseConstantsGL();
+                if(total > 0 & bw > 40){
+                    ipfGL=getIpfGLCoefficient(CX[0],CX[1],CX[2],bw,total);
+                    txtResult.setText(ipfGL+"");}
                 if(rb.isChecked()) {
                     if(checkedId == R.id.rb_Powerlifting){
                         txtShowHideExercises.setText(R.string.show_exercises);
                         txtShowHideExercises.setVisibility(View.VISIBLE);
                         imgShowExercise.setImageResource(R.drawable.arrow_down_download_save_icon_123720_48);
                         imgShowExercise.setVisibility(View.VISIBLE);}else{
-                        if(checkedId==R.id.rb_Squat||checkedId==R.id.rb_Benchpress||checkedId==R.id.rb_Deadlift){
+                        if(checkedId==R.id.rb_Benchpress){
                             if(isFragmentDisplayed){closeFragment();}
                             imgShowExercise.setVisibility(View.GONE);
                             txtShowHideExercises.setVisibility(View.GONE);}
-                    }//здесь какбы делаем группу из четырех переключателей, чтоб горел только один переключатель из двух разных групп
-                    if (checkedId == R.id.rb_Powerlifting || checkedId == R.id.rb_Benchpress) {
-                        rgSquatdl.clearCheck();
-                    } else if (checkedId == R.id.rb_Squat || checkedId == R.id.rb_Deadlift) {
-                        rgLiftbp.clearCheck();
                     }
                 }
             }
         }
     };
 //Выбираем коэффициенты в зависимости от того какой radioButton выбран
-    private void ChooseConstants(){
-            if(rbMale.isChecked()){
-                mwxWeight=menWeight;
-                if(rbClassic.isChecked()){
-                    if(rbPowerlifting.isChecked()){CX=MCL;MWX=MPC;}
-                    if(rbBenchpress.isChecked()){CX=MCB;MWX=MBC;}
-                    if(rbSquat.isChecked()){CX=MCS;}
-                    if(rbDeadlift.isChecked()){CX=MCD;}
-                    } else{
-                    if(rbEquipped.isChecked()){
-                        if(rbPowerlifting.isChecked()){CX=MEL;MWX=MPE;}
-                        if(rbBenchpress.isChecked()){CX=MEB;MWX=MBE;}
-                        if(rbSquat.isChecked()){CX=MES;}
-                        if(rbDeadlift.isChecked()){CX=MED;}
-                    }
+    private void ChooseConstantsGL(){
+        if(rbMale.isChecked()){
+            mwxWeight=menWeight;
+            if(rbClassic.isChecked()){
+                if(rbPowerlifting.isChecked()){CX=MCP_GL;MWX=MPC;}
+                if(rbBenchpress.isChecked()){CX=MCB_GL;MWX=MBC;}
+            } else{
+                if(rbEquipped.isChecked()){
+                    if(rbPowerlifting.isChecked()){CX=MEP_GL;MWX=MPE;}
+                    if(rbBenchpress.isChecked()){CX=MEB_GL;MWX=MBE;}
                 }
-            }else{
-                if(rbFemale.isChecked()){
-                    mwxWeight=womenWeight;
-                    if(rbClassic.isChecked()){
-                        if(rbPowerlifting.isChecked()){CX=WCL;MWX=WPC;}
-                        if(rbBenchpress.isChecked()){CX=WCB;MWX=WBC;}
-                        if(rbSquat.isChecked()){CX=WCS;}
-                        if(rbDeadlift.isChecked()){CX=WCD;}
-                    } else{
-                        if(rbEquipped.isChecked()){
-                            if(rbPowerlifting.isChecked()){CX=WEL;MWX=WPE;}
-                            if(rbBenchpress.isChecked()){CX=WEB;MWX=WBE;}
-                            if(rbSquat.isChecked()){CX=WES;}
-                            if(rbDeadlift.isChecked()){CX=WED;}
-                        }
+            }
+        }else{
+            if(rbFemale.isChecked()){
+                mwxWeight=womenWeight;
+                if(rbClassic.isChecked()){
+                    if(rbPowerlifting.isChecked()){CX=WCP_GL;MWX=WPC;}
+                    if(rbBenchpress.isChecked()){CX=WCB_GL;MWX=MBC;}
+                } else{
+                    if(rbEquipped.isChecked()){
+                        if(rbPowerlifting.isChecked()){CX=WEP_GL;MWX=WPE;}
+                        if(rbBenchpress.isChecked()){CX=WEB_GL;MWX=WBE;}
                     }
                 }
             }
         }
+    }
 
-        private double getIpfPoints(double C1, double C2, double C3, double C4, double bw, double total) {
-            ipfPoints = 500 + 100 * (total - (C1 * log(bw) - C2)) / (C3 * log(bw) - C4);
-            bigDecimal = new BigDecimal(ipfPoints);
+        private double getIpfGLCoefficient(double A, double B, double C, double bw,double total){
+        ipfGL=100/(A-(B*pow(Math.E,(-C*bw))));
+        bigDecimal=new BigDecimal(ipfGL*total);
             return bigDecimal.setScale(2, BigDecimal.ROUND_HALF_EVEN).doubleValue();
         }
 
@@ -432,11 +392,11 @@ public class MainActivity extends AppCompatActivity implements Fragment3Exercise
         edTotal.setText(String.valueOf(total));
         frag3Exercises.bwFromActivity=bw;
         if (bw > 40) {
-            ipfPoints = getIpfPoints(CX[0], CX[1], CX[2], CX[3], bw, total);
+            ipfGL = getIpfGLCoefficient(CX[0], CX[1], CX[2], bw, total);
         }
-        if (ipfPoints > 0) {
-            txtResult.setText(ipfPoints+"");
-            frag3Exercises.strResult=ipfPoints+"";
+        if (ipfGL > 0) {
+            txtResult.setText(ipfGL+"");
+            frag3Exercises.strResult=ipfGL+"";
         } else {
             txtResult.setText("0.00");
         }

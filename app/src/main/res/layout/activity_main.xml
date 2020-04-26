@@ -25,9 +25,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/total"
+        android:textColor="@android:color/black"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="@+id/ed_total"
         app:layout_constraintStart_toStartOf="@+id/ed_total"
         app:layout_constraintTop_toBottomOf="@+id/txt_result" />
@@ -37,6 +37,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:lines="1"
+        android:maxLength="7"
         android:shadowColor="@android:color/darker_gray"
         android:shadowDx="2"
         android:shadowDy="2"
@@ -45,8 +47,6 @@
         android:textColor="@android:color/black"
         android:textSize="52dp"
         android:textStyle="bold"
-        android:lines="1"
-        android:maxLength="7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -114,6 +114,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/rg_classic_equipped"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider">
 
@@ -136,6 +138,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/rg_male_female"
+        app:layout_constraintEnd_toStartOf="@+id/rg_lift_bp"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/rg_male_female"
         app:layout_constraintTop_toTopOf="@+id/rg_male_female">
 
@@ -153,57 +157,31 @@
             android:text="@string/equipped" />
     </RadioGroup>
 
+
     <RadioGroup
-        android:id="@+id/radioGroup3"
+        android:id="@+id/rg_lift_bp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="@+id/rg_classic_equipped"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/rg_classic_equipped"
         app:layout_constraintTop_toTopOf="@+id/rg_classic_equipped">
 
-        <RadioGroup
-            android:id="@+id/rg_lift_bp"
+        <RadioButton
+            android:id="@+id/rb_Powerlifting"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/powerlifting" />
 
-            <RadioButton
-                android:id="@+id/rb_Powerlifting"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/powerlifting" />
-
-            <RadioButton
-                android:id="@+id/rb_Benchpress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:text="@string/bench_press" />
-        </RadioGroup>
-
-        <RadioGroup
-            android:id="@+id/rg_squat_dl"
+        <RadioButton
+            android:id="@+id/rb_Benchpress"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
 
-            <RadioButton
-                android:id="@+id/rb_Squat"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:text="@string/squat" />
-
-            <RadioButton
-                android:id="@+id/rb_Deadlift"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:text="@string/deadlift" />
-        </RadioGroup>
-
+            android:text="@string/bench_press" />
     </RadioGroup>
 
     <View
@@ -259,11 +237,11 @@
         android:id="@+id/txt_bodyweight_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="+84"
         app:layout_constraintBottom_toBottomOf="@+id/txt_name_weight"
         app:layout_constraintEnd_toEndOf="@+id/txt_category"
         app:layout_constraintStart_toEndOf="@+id/txt_name_weight"
-        app:layout_constraintTop_toTopOf="@+id/txt_name_weight" />
+        app:layout_constraintTop_toTopOf="@+id/txt_name_weight"
+        tools:text="+84" />
 
     <TextView
         android:id="@+id/txt_in"
