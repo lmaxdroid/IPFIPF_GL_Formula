@@ -78,7 +78,7 @@ public class Fragment3Exercises extends Fragment {
         }
     }
 
-    public Fragment3Exercises() {
+    public Fragment3Exercises () {
         // Required empty public constructor
     }
 
@@ -167,8 +167,8 @@ public class Fragment3Exercises extends Fragment {
         edDeadlift5 = rootView.findViewById(R.id.ed_deadlift_fragment_5);
         txtBodyWightFrag5=rootView.findViewById(R.id.txt_body_weight_frag5);
         txtBodyWightFrag5.setText(" 5) "+sBodyweight);
-        txtResult5 = rootView.findViewById(R.id.txt_result_fragment_3);
-        txtPlusTotal5 = rootView.findViewById(R.id.txt_plus_3_exercises_3);
+        txtResult5 = rootView.findViewById(R.id.txt_result_fragment_5);
+        txtPlusTotal5 = rootView.findViewById(R.id.txt_plus_3_exercises_5);
         edSquat5.addTextChangedListener(watcher);
         edBench5.addTextChangedListener(watcher);
         edDeadlift5.addTextChangedListener(watcher);
@@ -239,6 +239,8 @@ public class Fragment3Exercises extends Fragment {
         @Override
         public void onClick(View v) {
             addNewPersonForWatch--;
+            if(addNewPersonForWatch==0){//getActivity().getSupportFragmentManager().beginTransaction().remove(Fragment3Exercises.this).commit();
+                ((MainActivity)getActivity()).closeFragment();}
             if(addNewPersonForWatch<5){
                 imgAddExercises.setVisibility(VISIBLE);
             }
@@ -247,7 +249,7 @@ public class Fragment3Exercises extends Fragment {
                     edSquat.setText("");
                     edBench.setText("");
                     edDeadlift.setText("");
-                    squat1=0.00;bench1=0.00;deadlift1=0.00;
+                    squat1=0.00;bench1=0.00;deadlift1=0.00;bw1=0;
                     txtBodyWightFrag1.setText(" 1) "+sBodyweight+"0.00");txtPlusTotal1.setText(sTotal+ "0.00");txtResult1.setText("0.00");
                     ll1.setVisibility(View.GONE);
                     break;
@@ -257,7 +259,7 @@ public class Fragment3Exercises extends Fragment {
                     edDeadlift2.setText("");
                     squat2=0.00;
                     bench2=0.00;
-                    deadlift2=0.00;
+                    deadlift2=0.00;bw2=0;
                     txtBodyWightFrag2.setText(" 2) "+sBodyweight+"0.00");
                     txtPlusTotal2.setText(sTotal+ "0.00");
                     txtResult2.setText("0.00");
@@ -265,19 +267,19 @@ public class Fragment3Exercises extends Fragment {
                     break;
                 case R.id.img_del3:
                     edSquat3.setText("");edBench3.setText("");edDeadlift3.setText("");
-                    squat3=0.00;bench3=0.00;deadlift3=0.00;
+                    squat3=0.00;bench3=0.00;deadlift3=0.00;bw3=0;
                     txtBodyWightFrag3.setText(" 3) "+sBodyweight+"0.00");txtPlusTotal3.setText(sTotal+ "0.00");txtResult3.setText("0.00");
                     ll3.setVisibility(View.GONE);
                     break;
                 case R.id.img_del4:
                     edSquat4.setText("");edBench4.setText("");edDeadlift4.setText("");
-                    squat4=0.00;bench4=0.00;deadlift4=0.00;
+                    squat4=0.00;bench4=0.00;deadlift4=0.00;bw4=0;
                     txtBodyWightFrag4.setText(" 4) "+sBodyweight+"0.00");txtPlusTotal4.setText(sTotal+ "0.00");txtResult4.setText("0.00");
                     ll4.setVisibility(View.GONE);
                     break;
                 case R.id.img_del5:
                     edSquat5.setText("");edBench5.setText("");edDeadlift5.setText("");
-                    squat5=0.00;bench5=0.00;deadlift5=0.00;
+                    squat5=0.00;bench5=0.00;deadlift5=0.00;bw5=0;
                     txtBodyWightFrag5.setText(" 5) "+sBodyweight+"0.00");txtPlusTotal5.setText(sTotal+ "0.00");txtResult5.setText("0.00");
                     ll5.setVisibility(View.GONE);
                     break;
@@ -300,8 +302,9 @@ public class Fragment3Exercises extends Fragment {
         @Override
         public void afterTextChanged(Editable s) {
             if(ll1.hasFocus()){
-               // bw1=bwFromActivity;
-                if(!txtResult1.getText().equals("0.00")){};
+                //bw1=bwFromActivity;
+                String str=" 1) "+sBodyweight+"0.00";
+                if(bw1!=0){((MainActivity)getActivity()).edBodyWeight.setText(bw1+"");}
             if (edSquat.getEditableText()==s) {
                 if (s.length() == 0 || s.toString().charAt(0) == '.') {
                     squat1 = 0.00;
@@ -334,7 +337,9 @@ public class Fragment3Exercises extends Fragment {
 
             }
             if(ll2.hasFocus()){
-                //bw2=bwFromActivity;
+               // bw2=bwFromActivity;
+                String str=" 2) "+sBodyweight+"0.00";
+                if(bw2!=0){((MainActivity)getActivity()).edBodyWeight.setText(bw2+"");}
                 if (edSquat2.getEditableText()==s) {
                     if (s.length() == 0 || s.toString().charAt(0) == '.') {
                         squat2 = 0.00;
@@ -367,7 +372,9 @@ public class Fragment3Exercises extends Fragment {
                         txtResult2.setText(strResult);
             }
             if(ll3.hasFocus()){
-                // bw3=bwFromActivity;
+                bw3=bwFromActivity;
+                String str=" 3) "+sBodyweight+"0.00";
+                if((txtResult3.getText().equals("0.00")&&txtBodyWightFrag3.getText().equals(str))){((MainActivity)getActivity()).edBodyWeight.setText(bw3+"");}
                 if (edSquat3.getEditableText()==s) {
                     if (s.length() == 0 || s.toString().charAt(0) == '.') {
                         squat3 = 0.00;
@@ -400,7 +407,9 @@ public class Fragment3Exercises extends Fragment {
                 txtResult3.setText(strResult);
             }
             if(ll4.hasFocus()){
-                // bw3=bwFromActivity;
+                bw4=bwFromActivity;
+                String str=" 4) "+sBodyweight+"0.00";
+                if((txtResult4.getText().equals("0.00")&&txtBodyWightFrag4.getText().equals(str))){((MainActivity)getActivity()).edBodyWeight.setText(bw4+"");}
                 if (edSquat4.getEditableText()==s) {
                     if (s.length() == 0 || s.toString().charAt(0) == '.') {
                         squat4 = 0.00;
@@ -433,7 +442,9 @@ public class Fragment3Exercises extends Fragment {
                 txtResult4.setText(strResult);
             }
             if(ll5.hasFocus()){
-                // bw3=bwFromActivity;
+                bw5=bwFromActivity;
+                String str=" 5) "+sBodyweight+"0.00";
+                if((txtResult5.getText().equals("0.00")&&txtBodyWightFrag5.getText().equals(str))){((MainActivity)getActivity()).edBodyWeight.setText(bw5+"");}
                 if (edSquat5.getEditableText()==s) {
                     if (s.length() == 0 || s.toString().charAt(0) == '.') {
                         squat5 = 0.00;

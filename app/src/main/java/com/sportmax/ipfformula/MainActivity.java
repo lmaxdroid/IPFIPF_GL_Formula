@@ -318,7 +318,9 @@ public class MainActivity extends AppCompatActivity implements Fragment3Exercise
                 ChooseConstantsGL();
                 if(total > 0 & bw > 40){
                     ipfGL=getIpfGLCoefficient(CX[0],CX[1],CX[2],bw,total);
-                    txtResult.setText(ipfGL+"");}
+                    txtResult.setText(ipfGL+"");
+                    chooseSportsCategory(bw,total);
+                }
                 if(rb.isChecked()) {
                     if(checkedId == R.id.rb_Powerlifting){
                         txtShowHideExercises.setText(R.string.show_exercises);
@@ -377,12 +379,14 @@ public class MainActivity extends AppCompatActivity implements Fragment3Exercise
             isFragmentDisplayed = true;
             edTotal.setEnabled(false);
         }
-        private void closeFragment(){
+        public void closeFragment(){
             FragmentManager fragmentManager=getSupportFragmentManager();
             FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
             fragmentTransaction.remove(frag3Exercises).commit();
             isFragmentDisplayed=false;
             edTotal.setEnabled(true);
+            txtShowHideExercises.setText(R.string.show_exercises);
+            imgShowExercise.setImageResource(R.drawable.arrow_down_download_save_icon_123720_48);
         }
 
     @Override
