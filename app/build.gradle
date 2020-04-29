@@ -14,7 +14,7 @@ android {
         applicationId "com.sportmax.ipfformula"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 4
+        versionCode 5
         versionName "2.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
