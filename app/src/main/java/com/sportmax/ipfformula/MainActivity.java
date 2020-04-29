@@ -171,11 +171,11 @@ public class MainActivity extends AppCompatActivity implements Fragment3Exercise
         Intent intent;
         switch (item.getItemId()){
             case R.id.action_search:
-               intent=new Intent(this,AboutActivity.class);
+               intent=new Intent(this,PdfActivity.class);
                startActivity(intent);
                 break;
             case R.id.action_show_normatives:
-                intent=new Intent(this,NormativesActivity.class);
+                intent=new Intent(this,Recycler_Normatives.class);
                 startActivity(intent);
                 break;
             default:
@@ -368,7 +368,7 @@ public class MainActivity extends AppCompatActivity implements Fragment3Exercise
         private double getIpfGLCoefficient(double A, double B, double C, double bw,double total){
         ipfGL=100/(A-(B*pow(Math.E,(-C*bw))));
         bigDecimal=new BigDecimal(ipfGL*total);
-            return bigDecimal.setScale(2, BigDecimal.ROUND_HALF_EVEN).doubleValue();
+            return bigDecimal.setScale(3, BigDecimal.ROUND_HALF_EVEN).doubleValue();
         }
 
         private void showFragment(){
@@ -432,7 +432,7 @@ public class MainActivity extends AppCompatActivity implements Fragment3Exercise
     }
 
     public void onClickCategory(View view) {
-        Intent intent=new Intent(this,NormativesActivity.class);
+        Intent intent=new Intent(this,Recycler_Normatives.class);
         startActivity(intent);
     }
 }
