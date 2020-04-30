@@ -354,7 +354,7 @@ public class MainActivity extends AppCompatActivity implements Fragment3Exercise
                 mwxWeight=womenWeight;
                 if(rbClassic.isChecked()){
                     if(rbPowerlifting.isChecked()){CX=WCP_GL;MWX=WPC;}
-                    if(rbBenchpress.isChecked()){CX=WCB_GL;MWX=MBC;}
+                    if(rbBenchpress.isChecked()){CX=WCB_GL;MWX=WBC;}
                 } else{
                     if(rbEquipped.isChecked()){
                         if(rbPowerlifting.isChecked()){CX=WEP_GL;MWX=WPE;}
@@ -384,6 +384,8 @@ public class MainActivity extends AppCompatActivity implements Fragment3Exercise
             FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
             fragmentTransaction.remove(frag3Exercises).commit();
             isFragmentDisplayed=false;
+            txtShowHideExercises.setText(R.string.show_exercises);
+            imgShowExercise.setImageResource(R.drawable.arrow_down_download_save_icon_123720_48);
             edTotal.setEnabled(true);
             txtShowHideExercises.setText(R.string.show_exercises);
             imgShowExercise.setImageResource(R.drawable.arrow_down_download_save_icon_123720_48);
