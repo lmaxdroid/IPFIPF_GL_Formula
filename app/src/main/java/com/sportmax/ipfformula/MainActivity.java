@@ -432,7 +432,7 @@ public class MainActivity extends AppCompatActivity implements Fragment3Exercise
             txtCategory.setText(arrayStringCategory[jj]);
         }
     }
-
+//нажимаешь на место где показывается выполненный норматив и открывается меню нормативы
     public void onClickCategory(View view) {
         Intent intent=new Intent(this,Recycler_Normatives.class);
         startActivity(intent);
